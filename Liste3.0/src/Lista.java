@@ -1,78 +1,82 @@
 
 public class Lista {
-    
+
     Nodo root;
-    
+
     public Lista() {
         root = null;
     }
 
     public boolean isEmpty() {
-        return root==null;
+        return root == null;
     }
 
     public int getLength() {
         Nodo tmp = root;
-        int l = 0;
-        while (tmp!=null) {
-            l++;
+        int dim = 0;
+        while (tmp != null) {
+            dim++;
             tmp = tmp.getNext();
         }
-        return l;
+        return dim;
     }
 
-    public void add( String s ) {
+    public void add(String s) {
         Nodo n = new Nodo(s);
         addTail(n);
     }
 
-    public void addHead( Nodo n ) {
+    public void addHead(Nodo n) {
         Nodo tmp = root;
         root = n;
         n.setNext(tmp);
     }
 
-    public void addTail( Nodo n ) {
-        if (root==null) {
+    public void addTail(Nodo n) {
+        if (root == null) {
             root = n;
         } else {
             Nodo temp = root;
-            while (temp.getNext()!=null) temp=temp.getNext();
+            while (temp.getNext() != null)
+                temp = temp.getNext();
             temp.setNext(n);
         }
     }
 
-    public boolean remove( String s ) {
-        if (root==null) return false;
+    public String remove(String s) {
+        if (root == null)
+            return "No c'è niente da rimuovere";
         if (root.getValue().equals(s)) {
             root = root.getNext();
-            return true;
+            return "Rimozione eseguita con successo, era il primo elemento";
         }
-        Nodo tmp=root, succ=root.getNext();
-        while (succ!=null) {
+        Nodo tmp = root, succ = root.getNext();
+        while (succ != null) {
             if (succ.getValue().equals(s)) {
                 tmp.setNext(succ.getNext());
-                return true;
+                return "Rimozione eseguita con successo";
             }
-            tmp=succ;
-            succ=succ.getNext();
-        } 
-        return false;
+            tmp = succ;
+            succ = succ.getNext();
+        }
+        return "L'elemento non è stato rimosso";
     }
 
-    public boolean exists( String s ) {
+    public String esiste(String s) {
         Nodo tmp = root;
-        while (tmp!=null) {
-            if (tmp.getValue().equals(s)) return true;
+        while (tmp != null) {
+            if (tmp.getValue().equals(s))
+                return s + " esiste";
             tmp = tmp.getNext();
         }
-        return false;
+        return s + " non esiste";
     }
 
-    public Nodo find( String s ) {
+    public Nodo cerca(String s) {
         Nodo tmp = root;
-        while (tmp!=null) {
-            if (tmp.getValue().equals(s)) return tmp;
+        while (tmp != null) {
+            if (tmp.getValue().equals(s))
+                return tmp;
             tmp = tmp.getNext();
         }
         return null;
@@ -81,9 +85,15 @@ public class Lista {
     public String toString() {
         String s = "La lista contiene: ";
         Nodo temp = root;
-        while (temp!=null) {
-            s += temp.getValue() + " - ";
-            temp = temp.getNext();
+        while (temp != null) {
+            if (temp.getNext() != null) {
+                s += temp.getValue() + " - ";
+                temp = temp.getNext();
+            }else {
+                s += temp.getValue();
+                break;
+            }
+
         }
         return s + "\n";
     }

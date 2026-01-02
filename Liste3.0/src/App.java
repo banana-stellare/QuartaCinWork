@@ -1,17 +1,28 @@
 public class App {
 	public static void main(String[] args) {
 
-        // crea una lista di stringhe con dati di prova, la manipola con i metodi presenti ed infine la stampa
         Lista l = new Lista();
-	    l.add( "Mario" );
-	    l.addHead(new Nodo("Prima di Mario"));
-	    l.addTail(new Nodo("Dopo di Mario"));
+	    System.out.println("Aggiunta di: Mimmo");l.add( "Mimmo" );
+	    System.out.println("Aggiunta di: Mario");l.addHead(new Nodo("Mario"));
+	    System.out.println("Aggiunta di: Luigi");l.addTail(new Nodo("Luigi"));
         
 		System.out.println("Lunghezza lista: " + l.getLength());
-		System.out.println("Contiene 'Mario'? " + l.exists("Mario"));
-		System.out.println("Contiene 'Luigi'? " + l.exists("Luigi"));
+
+		System.out.println("'Mario' esiste? " + l.esiste("Mario"));
+		System.out.println("'Luigi' esiste? " + l.esiste("Luigi"));
+		System.out.println("'Mimmo' esiste? " + l.esiste("Mimmo"));
+		System.out.println("'Matteo' esiste? " + l.esiste("Matteo"));
+
 		System.out.println(l);
-		System.out.println("Rimuovo 'Mario': " + l.remove("Mario"));
+		System.out.println("Rimozione 'Mario': " + l.remove("Mario"));
+		System.out.println("'Mario' esiste? " + l.esiste("Mario"));
 		System.out.println(l);
+
+		System.out.println("Aggiunta di: Matteo");l.addHead(new Nodo("Matteo"));
+		System.out.println("'Matteo' esiste? " + l.esiste("Matteo"));
+		System.out.println(l);
+
+		System.out.println("Aggiunta di: Mario");l.addTail(new Nodo("Mario"));
+		System.out.println("Rimozione 'Mario': " + l.remove("Mario"));
 	}
 }
