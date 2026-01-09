@@ -29,6 +29,8 @@ public class Team {
     public void caricaTeam(){
         try{
             FileInputStream fi1 = new FileInputStream("data/"+name+".txt");
+        }catch(Exception e){
+            
         }
     }
 
