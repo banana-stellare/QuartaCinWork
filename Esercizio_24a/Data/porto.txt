@@ -1,0 +1,1 @@
+Posizione barca: 21 Barca [modello=boh, nazionalita=Italia, nome=Poerio, lunghezza=12, stazza=30, tb=MOTORE]
